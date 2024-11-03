@@ -9,7 +9,13 @@ var st = {
 
 	init: function() {
 		st.math.init();
+		st.names.init();
+	},
+	
+	init2: function() {
 		st.character.init();
+		st.render.init();
+		st.render.render();
 	}
 };
 

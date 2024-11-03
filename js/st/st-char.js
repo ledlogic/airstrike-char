@@ -22,6 +22,36 @@ st.character = {
 			
 			st.character.spec.attributes[key] = c;
 		});
+		
+		var gender = st.gender[st.math.dieArray(st.gender)];
+		st.character.spec.attributes["gender"] = gender;
+		
+		var sel = (gender == "nonbinary" ? st.gender[Math.round(Math.random())] : gender);
+		var givennamelist = st.names[sel].list;
+		var givenname = givennamelist[st.math.dieArray(givennamelist)].Name + "";
+		
+		var regex = /(.*)\s\((.*)\)/;
+		var groups = givenname.match(regex);
+		if (groups.length) {
+			var ukname = groups[1];
+			var engname = groups[2];
+			var bracketregex = /.*(\s\[.*\]).*/;
+			var groups2 = engname.match(bracketregex);
+			if (groups2 && groups2.length) {
+				engname = engname.replace(groups2[1], "");
+			}
+			givenname = engname + " (" + ukname + ")"
+		}
+		st.character.spec.attributes["givenname"] = givenname;
+
+		var surname = st.names.surnames.list[st.math.dieArray(st.names.surnames.list)].Surname + "";
+		st.character.spec.attributes["surname"] = surname;
+
+		var age = st.math.die(1, 6, 17);
+		st.character.spec.attributes["age"] = age;
+
+		st.character.spec.attributes["rank"] = 1;
+
 		console.log(st.character.spec.attributes);
 	},
 	modifier: function(c) {
