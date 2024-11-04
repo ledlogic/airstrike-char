@@ -48,6 +48,9 @@ st.character = {
 
 		var surname = st.names.surnames.list[st.math.dieArray(st.names.surnames.list)].Surname + "";
 		st.character.spec.attributes["surname"] = surname;
+		
+		var callsign = st.callsigns.list[st.math.dieArray(st.callsigns.list)].Callsign + "";
+		st.character.spec.attributes["callsign"] = callsign;
 
 		var age = st.math.die(1, 6, 17);
 		st.character.spec.attributes["age"] = age;
@@ -71,9 +74,21 @@ st.character = {
 		skills[roleSkill] = 1;
 		
 		// base skills
-		_.each(st.skills.base, function(element, index, list) {
-			skills[index] = element;			
+		_.each(st.skills.base, function(element, skill) {
+			skills[skill] = element;			
 		});
+		
+		// specialist skills
+		for (var i=0;i<2;i++) {
+			var secondary = st.roles[role].skills.secondary;
+			var skill = secondary[st.math.dieArray(secondary)];
+			if (typeof skills[skill] == "undefined"
+				|| skills[skill] < 1) {
+				skills[skill] = 1;
+			} else {
+				i--;
+			}
+		}
 		
 		// sort skills
 		skills = st.skills.sortSkills(skills);

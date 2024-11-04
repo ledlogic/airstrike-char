@@ -23,9 +23,15 @@ st.render = {
 		var $overview = $("<div class=\"st-overview\"></div>");
 		
 		// name
+		var callsign = st.character.spec.attributes["callsign"];
+
+		$elm = $("<span class=\"st-overview-callsign\">\"" + callsign + "\" </span>");
+		$overview.append($elm);
+
 		var givenname = st.character.spec.attributes["givenname"];
 		var surname = st.character.spec.attributes["surname"];
 		var h = givenname + " " + surname;
+
 		$elm = $("<span class=\"st-overview-name\">" + h + "</span>");
 		$overview.append($elm);
 		
@@ -34,7 +40,7 @@ st.render = {
 		$overview.append($elm);
 		var gender = st.character.spec.attributes["gender"];
 		var h = _.capitalize2(gender);
-		$elm = $("<span class=\"st-overview-gender\">Gender: " + h + "</span>");
+		$elm = $("<span class=\"st-overview-gender\">Gender-" + h + "</span>");
 		$overview.append($elm);
 		
 		// age
@@ -42,7 +48,7 @@ st.render = {
 		$overview.append($elm);
 		var age = st.character.spec.attributes["age"];
 		var h = age;
-		$elm = $("<span class=\"st-overview-age\">Age: " + h + "y</span>");
+		$elm = $("<span class=\"st-overview-age\">Age-" + h + "</span>");
 		$overview.append($elm);
 		$elm = $("<br/>");
 		$overview.append($elm);

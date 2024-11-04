@@ -13,6 +13,9 @@ var st = {
 	},
 	
 	init2: function() {
+		st.callsigns.init();
+	},
+	init3: function() {
 		st.character.init();
 		st.render.init();
 		st.render.render();
