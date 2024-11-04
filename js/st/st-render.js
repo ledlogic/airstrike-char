@@ -57,11 +57,13 @@ st.render = {
 		
 		// skills
 		var skills = st.character.spec.skills;
-		var h = [];
-		
-		console.log(skills);
-		
-		h = h.join("\r\n");
+		var keys = _.sortBy(_.keys(skills));
+		var skh = [];
+		_.each(keys, function(key) {
+			skh.push(_.keyToLabel(key) + "-" + skills[key]);
+		});
+
+		var h = skh.join(", ");
 		$elm = $("<span class=\"st-overview-role\">Skills: " + h + "</span>");
 		$overview.append($elm);
 

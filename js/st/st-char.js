@@ -68,15 +68,16 @@ st.character = {
 		// role skill
 		var skills = {};
 		var roleSkill = st.roles[role].skills.role;
-		skills[roleSkill] = 0;
+		skills[roleSkill] = 1;
 		
 		// base skills
 		_.each(st.skills.base, function(element, index, list) {
 			skills[index] = element;			
 		});
 		
-		// 
-		
+		// sort skills
+		skills = st.skills.sortSkills(skills);
+			
 		st.character.spec.skills = skills;
 		console.log(st.character.skills);
 	},
