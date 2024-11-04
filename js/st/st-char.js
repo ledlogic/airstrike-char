@@ -14,6 +14,8 @@ st.character = {
 		st.log("init character");
 		st.character.$pageft = $(".st-page .st-page-ft");
 		st.character.genAttributes();
+		st.character.genRole();
+		st.character.genSkills();
 	},
 	genAttributes: function() {
 		st.character.spec.attributes = {};
@@ -51,8 +53,32 @@ st.character = {
 		st.character.spec.attributes["age"] = age;
 
 		st.character.spec.attributes["rank"] = 1;
+		console.log(st.character.spec.attributes);
+	},
+	genRole: function() {
+		var roles = _.keys(st.roles);
+		var role = roles[st.math.dieArray(roles)];
+		st.character.spec.attributes["role"] = role;
 
 		console.log(st.character.spec.attributes);
+	},
+	genSkills: function() {
+		var role = st.character.spec.attributes["role"];
+
+		// role skill
+		var skills = {};
+		var roleSkill = st.roles[role].skills.role;
+		skills[roleSkill] = 0;
+		
+		// base skills
+		_.each(st.skills.base, function(element, index, list) {
+			skills[index] = element;			
+		});
+		
+		// 
+		
+		st.character.spec.skills = skills;
+		console.log(st.character.skills);
 	},
 	modifier: function(c) {
 		switch (true) {
