@@ -16,6 +16,7 @@ st.character = {
 		st.character.genAttributes();
 		st.character.genRole();
 		st.character.genSkills();
+		
 	},
 	genAttributes: function() {
 		st.character.spec.attributes = {};
@@ -74,15 +75,25 @@ st.character = {
 		skills[roleSkill] = 1;
 		
 		// base skills
+		st.log("base skills");
 		_.each(st.skills.base, function(element, skill) {
 			skills[skill] = element;			
 		});
 		
+		// sort skills
+		skills = st.skills.sortSkills(skills);
+		st.log("skills[" + _.mapToString(skills) + "]");
+		
 		// specialist skills
+		st.log("specialist skills");
 		for (var i=0;i<2;i++) {
+			st.log("i[" + i + "]");
 			var secondary = st.roles[role].skills.secondary;
 			var skill = secondary[st.math.dieArray(secondary)];
-			if (typeof skills[skill] == "undefined"
+			var typeofskill = typeof skills[skill] == "undefined";
+			st.log("skill[" + skill + "]");
+			st.log("typeofskill[" + typeofskill + "]");
+			if (typeofskill
 				|| skills[skill] < 1) {
 				skills[skill] = 1;
 			} else {
@@ -92,6 +103,28 @@ st.character = {
 		
 		// sort skills
 		skills = st.skills.sortSkills(skills);
+		st.log("skills[" + _.mapToString(skills) + "]");
+		
+		// extra skills
+		st.log("extra skills");
+		for (var i=0;i<2;i++) {
+			st.log("i[" + i + "]");
+			var secondary = st.roles[role].skills.secondary;
+			var skill = secondary[st.math.dieArray(secondary)];
+			var typeofskill = typeof skills[skill] == "undefined";
+			st.log("skill[" + skill + "]");
+			st.log("typeofskill[" + typeofskill + "]");
+			if (typeofskill) {
+				skills[skill] = 0;
+			} else {
+				i--;
+			}
+			st.log("i2[" + i + "]");
+		}
+		
+		// sort skills
+		skills = st.skills.sortSkills(skills);
+		st.log("skills[" + _.mapToString(skills) + "]");
 			
 		st.character.spec.skills = skills;
 		console.log(st.character.skills);

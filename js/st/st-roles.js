@@ -1,4 +1,5 @@
 /* st.roles.js */
+
 st.roles = {
 	"pilot": {
 		"name": "pilot",
@@ -69,7 +70,7 @@ st.roles = {
 				"carousing",
 				"mechanics",
 				"gambling",
-				"bribery",
+				"bribery"
 			]
 		}
 	},

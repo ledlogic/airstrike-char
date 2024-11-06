@@ -1,4 +1,4 @@
-/* st.characterstics.js */
+/* st.gender.js */
 
 st.gender = [
 	"male",

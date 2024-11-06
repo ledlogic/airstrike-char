@@ -1,3 +1,5 @@
+/* st-render.js */
+
 st.render = {
 	init: function() {
 	},
@@ -65,12 +67,13 @@ st.render = {
 		var skills = st.character.spec.skills;
 		var keys = _.sortBy(_.keys(skills));
 		var skh = [];
+		var len = keys.length;
 		_.each(keys, function(key) {
 			skh.push(_.keyToLabel(key) + "-" + skills[key]);
 		});
 
 		var h = skh.join(", ");
-		$elm = $("<span class=\"st-overview-role\">Skills: " + h + "</span>");
+		$elm = $("<span class=\"st-overview-role\">Skills (" + len + "): " + h + "</span>");
 		$overview.append($elm);
 
 		st.character.$pageft.append($overview);

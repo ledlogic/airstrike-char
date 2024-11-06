@@ -1,3 +1,5 @@
+/* st-utils.js */
+
 _.mixin({
 	capitalize2: function(string) {
 		var words = string.split(" ");
@@ -15,5 +17,13 @@ _.mixin({
 		var str = key.replace(/-/g, ' ');
 		var dispKey = _.capitalize2(str);
 		return dispKey;
+	},
+	mapToString: function(map) {
+		var ret = [];
+		_.each(map, function(value, index, list) {
+			ret.push("(" + index + ":" + value + ")");
+		});
+		
+		return ret.join(",");
 	}
 });
