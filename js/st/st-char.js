@@ -17,7 +17,8 @@ st.character = {
 		st.character.genAttributes();
 		st.character.genRole();
 		st.character.genSkills();
-		
+		st.character.genTrait();
+		st.character.genAppearance();
 	},
 	genCharacteristics: function() {
 		st.character.spec.characteristics = {};
@@ -148,5 +149,17 @@ st.character = {
 			case c>=15:
 				return 3; 
 		}
+	},
+	genTrait: function() {
+		var c = st.math.die(2, 6, 0);
+		var traits = st.traits;
+		var trait = traits[c];
+		st.character.spec.trait = trait;
+	},
+	genAppearance: function() {
+		var c = st.math.die(2, 6, 0);
+		var appearances = st.appearances;
+		var appearance = appearances[c];
+		st.character.spec.appearance = appearance;
 	}
 };

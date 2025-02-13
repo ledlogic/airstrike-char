@@ -38,20 +38,32 @@ st.render = {
 		// role
 		var role = st.character.spec.attributes["role"];
 		var h = _.capitalize2(role);
-		$elm = $("<span class=\"st-overview-role\">Role-" + h + "</span>" + "<br/>");
+		$elm = $("<span class=\"st-overview-role\">Role: " + h + "</span>" + "<br/>");
 		$overview.append($elm);
 		
 		// gender
 		var gender = st.character.spec.attributes["gender"];
 		var h = _.capitalize2(gender);
-		$elm = $("<span class=\"st-overview-gender\">Gender-" + h + "</span>" + "<br/>");
+		$elm = $("<span class=\"st-overview-gender\">Gender: " + h + "</span>" + "<br/>");
 		$overview.append($elm);
 		
 		// age
 		var age = st.character.spec.attributes["age"];
 		var h = age;
-		$elm = $("<span class=\"st-overview-age\">Age-" + h + "</span>" + "<br/><br/>");
+		$elm = $("<span class=\"st-overview-age\">Age: " + h + "</span>" + "<br/>");
 		$overview.append($elm);
+		
+		// trait
+		var trait = st.character.spec.trait;
+		var h = trait.name + ". \"" + trait.description + "\"";
+		$elm = $("<span class=\"st-overview-trait\">Trait: " + h + "</span>" + "<br/>");
+		$overview.append($elm);
+		
+		// appearance
+		var appearance = st.character.spec.appearance;
+		var h = appearance.name;
+		$elm = $("<span class=\"st-overview-appearance\">Appearance: " + h + "</span>" + "<br/><br/>");
+		$overview.append($elm);	
 		
 		// characteristics
 		var characteristics = st.characteristics;
