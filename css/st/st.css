@@ -1,24 +1,30 @@
 /* st.css */
 
 * {
-	font-family: 'Courier New', serif;
+	font-family: 'JMH Typewriter', sans-serif;
 }
 body {
-  line-height: 1.38;
-  margin: 1em;
+	background-image: url(../../img/runway.jpg);
+	line-height: 1.38;
+	margin: 1em;
 }
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'Courier New', serif;
+	font-family: 'JMH Typewriter', serif;
 }
 h1 {
 	font-size: 1.2em;
 }
 h1.page-title {
-	color: red;
+	color: #f00;
 	font-weight: bold;
 }
 h4 {
 	font-size: 0.8em;
+}
+div {
+	/* background: #717061; */
+	background: #d9d5a1;
+	opacity: 0.9;
 }
 .st-footer {
 	border-top: 1px solid #ccc;

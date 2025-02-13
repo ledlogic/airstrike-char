@@ -1,2 +1,11 @@
-/* st-char.css */
+.st-overview {
+	width:50%;
+	border-right: 1px solid #000;
+	padding: 10px;
+}
+.st-overview b {
+	color: #000;
+}
+.st-page-ft {
+	border: 1px solid #000;
 }

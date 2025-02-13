@@ -13,19 +13,21 @@ st.character = {
 	init: function() {
 		st.log("init character");
 		st.character.$pageft = $(".st-page .st-page-ft");
+		st.character.genCharacteristics();
 		st.character.genAttributes();
 		st.character.genRole();
 		st.character.genSkills();
 		
 	},
-	genAttributes: function() {
-		st.character.spec.attributes = {};
-		_.each(st.characteristics, function(x,key) {
+	genCharacteristics: function() {
+		st.character.spec.characteristics = {};
+		_.each(st.characteristics, function(x, key) {
 			var c = st.math.die(2, 6, 0);
-			
-			st.character.spec.attributes[key] = c;
+			st.character.spec.characteristics[key] = c;
 		});
-		
+	},
+	genAttributes: function() {		
+		st.character.spec.attributes = {};
 		var gender = st.gender[st.math.dieArray(st.gender)];
 		st.character.spec.attributes["gender"] = gender;
 		
