@@ -3,11 +3,6 @@
 * {
 	font-family: 'JMH Typewriter', sans-serif;
 }
-body {
-	background-image: url(../../img/runway.jpg);
-	line-height: 1.38;
-	margin: 1em;
-}
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'JMH Typewriter', serif;
 }
@@ -25,12 +20,4 @@ div {
 	/* background: #717061; */
 	background: #d9d5a1;
 	opacity: 0.9;
-}
-.st-footer {
-	border-top: 1px solid #ccc;
-	font-family: 'Courier New', serif;
-	padding-top: 10px;
-}
-.st-footer a {
-	font-style: italic;
 }

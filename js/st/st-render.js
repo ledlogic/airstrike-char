@@ -94,12 +94,29 @@ st.render = {
 
 		st.character.$pageft.append($overview);
 		
-		// notes
-		var $notes = $("<div class=\"st-notes\"></div>");
+		// equipment
+		var n = [];
+		n.push("<span class=\"st-overview-equipment\"><b>Equipment (" + len + "):</b><br/><br/>");
+		var equipments = st.equipment;
+		n.push("<table>");
+		_.each(equipments, function(equipment) {
+			n.push("<tr>");
+			
+			var eq = [];
+			eq.push(_.keyToLabel(equipment.name));
+			var keys = _.keys(equipment);
+			_.each(keys, function(key) {
+				if ("name" != key) {
+					eq.push("<br/>&nbsp;&nbsp;&nbsp;&nbsp;" + _.keyToLabel(key) + ": " + equipment[key]);
+				}
+			});
+			
+			n.push("<td>" + eq.join("") + "</td>");
+			n.push("</tr>");
+		});
+		n.push("</table>");
+
+		var $notes = $("<div class=\"st-notes\">" + n.join("") + "</div>");
 		st.character.$pageft.append($notes);
-		
-		// reset
-		var $reset = $("<div class=\"st-reset\"></div>");
-		st.character.$pageft.append($reset);
 	}
 };

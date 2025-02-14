@@ -2,6 +2,5 @@
 
 st.gender = [
 	"male",
-	"female",
-	"nonbinary"
+	"female"
 ];

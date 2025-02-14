@@ -1,11 +1,43 @@
+body {
+	background-image: url(../../img/runway.jpg);
+	background-size: auto 700px;
+	line-height: 1.38;
+	margin: 1em;
+}
+.st-page-ft {
+	position: relative
+}
 .st-overview {
+	display: block;
+	position: absolute;
+	left:0%;
+	top:0px;
 	width:50%;
 	border-right: 1px solid #000;
 	padding: 10px;
+	height: 600px;
 }
-.st-overview b {
+.st-overview b,
+.st-notes b {
 	color: #000;
 }
 .st-page-ft {
 	border: 1px solid #000;
+}
+.st-notes {
+	display: block;
+	position: absolute;
+	left:50%;
+	top:0px;
+	width:50%;
+	padding: 0 10px 0 10px;
+	height: 600px;
+}
+.st-footer {
+	padding-top: 10px;
+	position: relative;
+	top: 600px;
+}
+.st-footer a {
+	font-style: italic;
 }
