@@ -18,8 +18,10 @@ st.names = {
 		list: [],
 		ready: false,
 		request: function() {
+			var language = st.language;
+			
 			st.log("st.names.female.response");
-			var csv = "data/st-names-female.csv";
+			var csv = "data/st-names-female-" + language + ".csv";
 			st.log("loading data from csv[" + csv + "]");
 			
 			Papa.parse(csv, {
@@ -49,8 +51,10 @@ st.names = {
 		list: [],
 		ready: false,
 		request: function() {
+			var language = st.language;
+
 			st.log("st.names.male.request");
-			var csv = "data/st-names-male.csv";
+			var csv = "data/st-names-male-" + language + ".csv";
 			st.log("loading data from csv[" + csv + "]");
 			
 			Papa.parse(csv, {
@@ -80,8 +84,10 @@ st.names = {
 		list: [],
 		ready: false,
 		request: function() {
+			var language = st.language;
+
 			st.log("st.names.surnames.response");
-			var csv = "data/st-names-surnames.csv";
+			var csv = "data/st-names-surnames-" + language + ".csv";
 			st.log("loading data from csv[" + csv + "]");
 			
 			Papa.parse(csv, {

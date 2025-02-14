@@ -13,7 +13,12 @@ st.character = {
 	init: function() {
 		st.log("init character");
 		st.character.$pageft = $(".st-page .st-page-ft");
+		
+		st.character.spec.attributes = {};
+		st.character.spec.characteristics = {};
+
 		st.character.genCharacteristics();
+		st.character.getGender();
 		st.character.genAttributes();
 		st.character.genRole();
 		st.character.genSkills();
@@ -21,24 +26,27 @@ st.character = {
 		st.character.genAppearance();
 	},
 	genCharacteristics: function() {
-		st.character.spec.characteristics = {};
 		_.each(st.characteristics, function(x, key) {
 			var c = st.math.die(2, 6, 0);
 			st.character.spec.characteristics[key] = c;
 		});
 	},
-	genAttributes: function() {		
-		st.character.spec.attributes = {};
-		var gender = st.gender[st.math.dieArray(st.gender)];
+	getGender: function() {
+		var gender = st.gender;
+		if (!gender) {
+			gender = st.genders[st.math.dieArray(st.genders)];
+		}
 		st.character.spec.attributes["gender"] = gender;
-		
+	},
+	genAttributes: function() {
+		var gender = st.gender;
 		var sel = (gender == "nonbinary" ? st.gender[Math.round(Math.random())] : gender);
 		var givennamelist = st.names[sel].list;
-		var givenname = givennamelist[st.math.dieArray(givennamelist)].Name + "";
+		var givenname = givennamelist[st.math.dieArray(givennamelist)].name + "";
 		
 		var regex = /(.*)\s\((.*)\)/;
 		var groups = givenname.match(regex);
-		if (groups.length) {
+		if (groups && groups.length) {
 			var ukname = groups[1];
 			var engname = groups[2];
 			var bracketregex = /.*(\s\[.*\]).*/;
@@ -46,14 +54,17 @@ st.character = {
 			if (groups2 && groups2.length) {
 				engname = engname.replace(groups2[1], "");
 			}
-			givenname = engname + " (" + ukname + ")"
+			givenname = engname;
+			if (ukname) {
+				givenname += " (" + ukname + ")";
+			}
 		}
 		st.character.spec.attributes["givenname"] = givenname;
 
-		var surname = st.names.surnames.list[st.math.dieArray(st.names.surnames.list)].Surname + "";
+		var surname = st.names.surnames.list[st.math.dieArray(st.names.surnames.list)].surname + "";
 		st.character.spec.attributes["surname"] = surname;
 		
-		var callsign = st.callsigns.list[st.math.dieArray(st.callsigns.list)].Callsign + "";
+		var callsign = st.callsigns.list[st.math.dieArray(st.callsigns.list)].callsign + "";
 		st.character.spec.attributes["callsign"] = callsign;
 
 		var age = st.math.die(1, 6, 17);
