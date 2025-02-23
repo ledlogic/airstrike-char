@@ -1,8 +1,14 @@
 /* st.js */
 
+/* 
+example:
+http://localhost:8080/as/?language=german&gender=male&role=pilot
+*/
+
 var st = {
 	language: "ukrainian",
 	gender: null,
+	role: null,
 
 	log: function(s) {
 		if (typeof(window.console) != "undefined") {
@@ -22,6 +28,11 @@ var st = {
 		var gender = url.param('gender');
 		if (gender) {
 			st.gender = gender;
+		}
+		
+		var role = url.param('role');
+		if (role) {
+			st.role = role;
 		}
 
 		st.names.init();

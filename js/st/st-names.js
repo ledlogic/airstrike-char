@@ -20,7 +20,7 @@ st.names = {
 		request: function() {
 			var language = st.language;
 			
-			st.log("st.names.female.response");
+			st.log("st.names.female.request");
 			var csv = "data/st-names-female-" + language + ".csv";
 			st.log("loading data from csv[" + csv + "]");
 			
@@ -86,7 +86,7 @@ st.names = {
 		request: function() {
 			var language = st.language;
 
-			st.log("st.names.surnames.response");
+			st.log("st.names.surnames.request");
 			var csv = "data/st-names-surnames-" + language + ".csv";
 			st.log("loading data from csv[" + csv + "]");
 			

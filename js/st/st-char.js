@@ -74,11 +74,12 @@ st.character = {
 		console.log(st.character.spec.attributes);
 	},
 	genRole: function() {
-		var roles = _.keys(st.roles);
-		var role = roles[st.math.dieArray(roles)];
+		var role = st.role;
+		if (!role) {
+			var roles = _.keys(st.roles);
+			var role = roles[st.math.dieArray(roles)];
+		}
 		st.character.spec.attributes["role"] = role;
-
-		console.log(st.character.spec.attributes);
 	},
 	genSkills: function() {
 		var role = st.character.spec.attributes["role"];
